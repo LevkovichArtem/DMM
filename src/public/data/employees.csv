@@ -1,0 +1,4 @@
+Name,Role,Location,Unit,Allocation (%),Cost (PLN),Revenue (PLN),Month
+Anna Kowalska,Developer,Warsaw,Unit A,100,15000,25000,2025-07
+Jan Nowak,Tester,Krakow,Unit B,80,9000,15000,2025-07
+Piotr Zielinski,PM,Gdansk,Unit C,100,20000,28000,2025-07
