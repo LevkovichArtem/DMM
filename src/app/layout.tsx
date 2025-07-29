@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
-  title: 'Delivery Matrix Monitor',
+  title: 'Delivery Metrix Monitor',
   description: 'Overview of employee allocations, costs, and revenues',
 }
 
