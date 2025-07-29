@@ -27,28 +27,19 @@ export default function HomePage() {
   }, [])
 
   const handleCellChange = (
-    rowIndex: number,
-    field: keyof Employee,
-    value: string
-  ) => {
-    setData(prev => {
-      const updated = [...prev]
-      const row = { ...updated[rowIndex], _edited: true }
+  rowIndex: number,
+  field: 'Allocation (%)' | 'Cost (PLN)' | 'Revenue (PLN)',
+  value: string
+) => {
+  setData(prev => {
+    const updated = [...prev]
+    const row = { ...updated[rowIndex], _edited: true }
 
-      if (
-        field === 'Allocation (%)' ||
-        field === 'Cost (PLN)' ||
-        field === 'Revenue (PLN)'
-      ) {
-        row[field] = Number(value)
-      } else {
-        row[field] = value as any
-      }
-
-      updated[rowIndex] = row
-      return updated
-    })
-  }
+    row[field] = Number(value)
+    updated[rowIndex] = row
+    return updated
+  })
+}
 
   return (
     <main className="p-6">
