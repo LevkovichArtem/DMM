@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react'
 import Papa from 'papaparse'
 
+type EditableField = 'Allocation (%)' | 'Cost (PLN)' | 'Revenue (PLN)'
+
 type Employee = {
   Name: string
   Role: string
@@ -27,19 +29,19 @@ export default function HomePage() {
   }, [])
 
   const handleCellChange = (
-  rowIndex: number,
-  field: 'Allocation (%)' | 'Cost (PLN)' | 'Revenue (PLN)',
-  value: string
-) => {
-  setData(prev => {
-    const updated = [...prev]
-    const row = { ...updated[rowIndex], _edited: true }
+    rowIndex: number,
+    field: EditableField,
+    value: string
+  ) => {
+    setData(prev => {
+      const updated = [...prev]
+      const row = { ...updated[rowIndex], _edited: true }
 
-    row[field] = Number(value)
-    updated[rowIndex] = row
-    return updated
-  })
-}
+      row[field] = Number(value)
+      updated[rowIndex] = row
+      return updated
+    })
+  }
 
   return (
     <main className="p-6">
@@ -60,10 +62,7 @@ export default function HomePage() {
             const profit =
               Number(emp['Revenue (PLN)'] || 0) - Number(emp['Cost (PLN)'] || 0)
 
-            const isEditable = (field: keyof Employee) =>
-              ['Allocation (%)', 'Cost (PLN)', 'Revenue (PLN)'].includes(field)
-
-            const editableCell = (field: keyof Employee) => (
+            const editableCell = (field: EditableField) => (
               <td
                 className={`px-3 py-1 border text-right ${
                   emp._edited ? 'bg-yellow-100' : ''
